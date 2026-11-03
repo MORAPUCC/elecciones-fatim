@@ -5,16 +5,15 @@ $password = "AVNS_wOuXRjIds5mTQX7OAQI";
 $dbname = "defaultdb";
 $port = 26748;
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+$conexion = mysqli_init();
 
-try {
-    $conexion = mysqli_init();
-    $conexion->ssl_set(NULL, NULL, NULL, NULL, NULL);
-    $conexion->real_connect($host, $user, $password, $dbname, $port, NULL, MYSQLI_CLIENT_SSL);
-    $conexion->set_charset("utf8mb4");
-} catch (Exception $e) {
-    header('Content-Type: application/json');
-    echo json_encode(['exito' => false, 'mensaje' => 'Error de BD: ' . $e->getMessage()]);
-    exit;
+// Desactiva la verificación estricta del certificado SSL para permitir la conexión desde Render
+$conexion->options(MYSQLI_OPT_SSL_VERIFY_SERVER_CERT, false);
+$conexion->ssl_set(NULL, NULL, NULL, NULL, NULL);
+
+if (!@$conexion->real_connect($host, $user, $password, $dbname, $port, NULL, MYSQLI_CLIENT_SSL)) {
+    die(json_encode(['exito' => false, 'mensaje' => 'Error de conexión: ' . mysqli_connect_error()]));
 }
+
+$conexion->set_charset("utf8mb4");
 ?>
