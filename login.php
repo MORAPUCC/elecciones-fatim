@@ -135,7 +135,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="api/procesar_login.php" method="POST">
+        <form action="procesar_login.php" method="POST">
             
             <div class="mb-4">
                 <label class="form-label fw-semibold small text-secondary">Nombre de Usuario</label>
