@@ -1,5 +1,5 @@
 <?php
-require_once 'config/conexion.php';
+require_once 'conexion.php';
 // Consultar todas las listas con sus datos completos
 $resultado_listas = $conexion->query("SELECT * FROM listas");
 $listas = [];
