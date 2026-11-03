@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
     exit;
 }
 
-require_once '../config/conexion.php';
+require_once 'conexion.php';
 
 $grado   = isset($_POST['grado']) ? intval($_POST['grado']) : 0;
 $seccion = isset($_POST['seccion']) ? trim($_POST['seccion']) : '';
