@@ -11,7 +11,7 @@ require_once 'conexion.php';
 
 $nombre_lista = trim($_POST['nombre_lista'] ?? '');
 $lider        = trim($_POST['lider'] ?? '');
-$logo_url     = 'assets/img/default-logo.png'; // Logo por defecto si no suben foto
+$logo_url     = 'img/default-logo.png'; // Logo por defecto si no suben foto
 
 if (empty($nombre_lista) || empty($lider)) {
     echo json_encode(['exito' => false, 'mensaje' => 'Por favor ingrese el nombre de la lista y la representante.']);
@@ -27,7 +27,7 @@ if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
     $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
     if (in_array($fileExtension, $allowedExtensions)) {
         $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-        $uploadFileDir = '../assets/img/';
+        $uploadFileDir = 'img';
         
         if (!is_dir($uploadFileDir)) {
             mkdir($uploadFileDir, 0755, true);
@@ -36,7 +36,7 @@ if (isset($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
         $dest_path = $uploadFileDir . $newFileName;
         
         if (move_uploaded_file($fileTmpPath, $dest_path)) {
-            $logo_url = 'assets/img/' . $newFileName;
+            $logo_url = 'img' . $newFileName;
         }
     }
 }
