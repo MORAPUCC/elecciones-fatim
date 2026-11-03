@@ -178,7 +178,7 @@ while ($row = $resultado_listas->fetch_assoc()) {
                             <div class="card lista-card p-3" onclick="seleccionarLista(this, <?php echo $l['id']; ?>, '<?php echo htmlspecialchars($l['nombre_lista'], ENT_QUOTES); ?>')">
                                 <div class="row align-items-center">
                                     <div class="col-md-3 text-center mb-2 mb-md-0">
-                                        <img src="<?php echo !empty($l['logo_url']) ? $l['logo_url'] : 'assets/img/default-logo.png'; ?>" class="img-candidata mb-2" alt="Logo">
+                                        <img src="<?php echo !empty($l['logo_url']) ? $l['logo_url'] : 'img/default-logo.png'; ?>" class="img-candidata mb-2" alt="Logo">
                                         <h6 class="fw-bold text-primary mb-0"><?php echo htmlspecialchars($l['nombre_lista']); ?></h6>
                                     </div>
                                     <div class="col-md-9 border-start-md">
