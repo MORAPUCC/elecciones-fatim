@@ -1,34 +1,29 @@
 <?php
 session_start();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usuario = trim($_POST['usuario'] ?? '');
     $clave = trim($_POST['clave'] ?? '');
 
     if (empty($usuario) || empty($clave)) {
         header("Location: ../login.php?error=empty");
-        exit;
+        exit();
     }
-
-    // DEFINIMOS LOS USUARIOS Y CLAVES FIJOS DIRECTAMENTE AQUÍ
-    // cables de los admin usario y la contrseña
-    $usuarios_validos = [
-        'rivers' => '02621681',  // Contraseña fija para rivers
-        'admin'  => 'mramosch01'   // Contraseña fija para admin
+    // Definimos los usuarios y claves válidos directamente aquí
+    $usuarios_válidos = [
+        'rivers' => '02621681',         // Contraseña fija para ríos
+        'administración' => 'mramosch01' // Contraseña fija para admin
     ];
+    // Parte de validación
+    if (array_key_exists($usuario, $usuarios_válidos) && $usuarios_válidos[$usuario] === $clave) {
+        $_SESSION['administrador registrado'] = true;
+        $_SESSION['nombre_administrador'] = ($usuario === 'ríos') ? 'Profesor Rivers' : 'Administrador Principal';
+        $_SESSION['usuario_administrador'] = $usuario;
 
-    // parte de validacion 
-    if (array_key_exists($usuario, $usuarios_validos) && $usuarios_validos[$usuario] === $clave) {
-        $_SESSION['admin_logged'] = true;
-        $_SESSION['admin_nombre'] = ($usuario === 'rivers') ? 'Profesor Rivers' : 'Administrador Principal';
-        $_SESSION['admin_usuario'] = $usuario;
-        
         header("Location: ../admin.php");
-        exit;
+        exit();
     }
-
-    // Si falla, regresa con error
-    header("Location: ../login.php?error=invalid");
-    exit;
 }
+// Si falla, regresa con error
+header("Location: ../login.php?error=invalid");
+exit();
 ?>
