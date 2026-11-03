@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "votacion_escolar";
+$host = "mysql-35790ab1-ucvvirtual-3217.j.aivencloud.com";
+$user = "avnadmin";
+$pass = "AVNS_wOuXRjIds5mTQX7OAQI";
+$db   = "defaultdb";
 
 $conexion = new mysqli($host,$user, $pass,$db);
 
