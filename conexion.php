@@ -10,7 +10,7 @@ $conexion->ssl_set(NULL, NULL, NULL, NULL, NULL);
 $conexion->real_connect($host, $user, $pass, $db, $port, NULL, MYSQLI_CLIENT_SSL);
 
 if ($conexion->connect_error) {
-    die(json_encode(["error" => "Error de conexión: " . $conexion->connect_error]));
+    die("Error de conexión: " . $conexion->connect_error);
 }
 
 $conexion->set_charset("utf8mb4");
