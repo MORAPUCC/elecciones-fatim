@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
     exit;
 }
 
-require_once '../config/conexion.php';
+require_once 'conexion.php';
 
 $conexion->begin_transaction();
 
