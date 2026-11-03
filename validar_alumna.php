@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once '../config/conexion.php';
+require_once 'conexion.php';
 
 $grado = $_POST['grado'] ?? '';
 $seccion = $_POST['seccion'] ?? '';
