@@ -9,14 +9,19 @@ if (empty($usuario) || empty($clave)) {
     exit;
 }
 
-// Lista de usuarios y contraseñas permitidos
+// Convertimos el usuario ingresado a minúsculas para evitar problemas con mayúsculas/minúsculas
+$usuario_limpio = strtolower($usuario);
+
+// Credenciales válidas permitidas
 $credenciales_validas = [
+    "admin" => "02621681",
     "ríos" => "02621681",
-    "administracion" => "mramosch01" // Puedes cambiar o ajustar el segundo usuario aquí
+    "rios" => "02621681",
+    "rivers" => "02621681",          // Añadido para que te acepte rivers
+    "administracion" => "mramosch01"
 ];
 
-// Verificamos si el usuario existe y su contraseña coincide
-if (array_key_exists($usuario, $credenciales_validas) && $credenciales_validas[$usuario] === $clave) {
+if (array_key_exists($usuario_limpio, $credenciales_validas) && $credenciales_validas[$usuario_limpio] === $clave) {
     $_SESSION['admin_logged'] = true;
     $_SESSION['usuario_actual'] = $usuario;
     header("Location: admin.php");
