@@ -22,8 +22,7 @@ while ($row = $resultado_listas->fetch_assoc()) {
         .lista-card:hover { transform: translateY(-4px); border-color: #0d6efd; box-shadow: 0 6px 16px rgba(13,110,253,0.18); }
         .lista-card.seleccionada { border-color: #198754; background-color: #f4fbf7; box-shadow: 0 6px 18px rgba(25,135,84,0.25); }
         .img-candidata { width: 90px; height: 90px; object-fit: cover; border-radius: 50%; border: 3px solid #dee2e6; }
-        .integrantes-list { font-size: 0.88rem; text-align: left; }
-        
+        .integrantes-list { font-size: 0.88rem; text-align: left; }        
         /* FICHA CABECERA ELECTORA */
         .banner-electora {
             background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 50%, #0a58ca 100%);
@@ -279,7 +278,7 @@ while ($row = $resultado_listas->fetch_assoc()) {
         formData.append('seccion', seccion);
         formData.append('documento', dni);
 
-        fetch('api/validar_alumna.php', {
+        fetch('validar_alumna.php', {
             method: 'POST',
             body: formData
         })
@@ -337,7 +336,7 @@ while ($row = $resultado_listas->fetch_assoc()) {
         formData.append('alumna_id', alumnaIdSeleccionada);
         formData.append('lista_id', listaSeleccionada);
 
-        fetch('api/registrar_voto.php', {
+        fetch('registrar_voto.php', {
             method: 'POST',
             body: formData
         })
