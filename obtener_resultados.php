@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once '../config/conexion.php';
+require_once 'conexion.php';
 
 $queryVotos = "
     SELECT l.id, l.nombre_lista, COUNT(v.id) as total_votos
