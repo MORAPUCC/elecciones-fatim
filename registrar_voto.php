@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once '../config/conexion.php';
+require_once 'conexion.php';
 
 $alumna_id = isset($_POST['alumna_id']) ? intval($_POST['alumna_id']) : 0;
 $lista_id  = isset($_POST['lista_id']) ? intval($_POST['lista_id']) : 0;
