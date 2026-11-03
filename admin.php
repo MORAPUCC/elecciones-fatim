@@ -27,7 +27,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
         <span class="navbar-brand mb-0 h1"><i class="fas fa-user-shield me-2"></i>Panel Docente - Sistema Electoral</span>
         <div>
             <a href="index.php" class="btn btn-outline-light btn-sm me-2" target="_blank"><i class="fas fa-external-link-alt me-1"></i> Ir a Vista Votante</a>
-            <a href="api/logout.php" class="btn btn-danger btn-sm"><i class="fas fa-sign-out-alt me-1"></i> Salir</a>
+            <a href="logout.php" class="btn btn-danger btn-sm"><i class="fas fa-sign-out-alt me-1"></i> Salir</a>
         </div>
     </div>
 </nav>
@@ -230,7 +230,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
     });
 
     function cargarResultados() {
-        fetch('api/obtener_resultados.php')
+        fetch('obtener_resultados.php')
         .then(res => res.json())
         .then(data => {
             if (data.exito) {
@@ -275,7 +275,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
             const formData = new FormData();
             formData.append('id', id);
 
-            fetch('api/eliminar_lista.php', {
+            fetch('eliminar_lista.php', {
                 method: 'POST',
                 body: formData
             })
@@ -387,7 +387,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
                 return;
             }
 
-            fetch('api/subir_excel.php', {
+            fetch('subir_excel.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ alumnas: alumnasParaEnviar })
@@ -420,7 +420,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
             formData.append('grado', grado);
             formData.append('seccion', seccion);
 
-            fetch('api/eliminar_aula.php', {
+            fetch('eliminar_aula.php', {
                 method: 'POST',
                 body: formData
             })
@@ -436,7 +436,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
 
     function vaciarPadronGeneral() {
         if (confirm("⚠️ ¿Deseas BORRAR TODO el padrón de alumnas y reiniciar todos los votos del colegio?")) {
-            fetch('api/vaciar_padron.php', { method: 'POST' })
+            fetch('vaciar_padron.php', { method: 'POST' })
             .then(res => res.json())
             .then(data => {
                 alert(data.mensaje);
@@ -466,7 +466,7 @@ if (!isset($_SESSION['admin_logged']) || $_SESSION['admin_logged'] !== true) {
             formData.append('logo', logoInput.files[0]);
         }
 
-        fetch('api/guardar_lista.php', {
+        fetch('guardar_lista.php', {
             method: 'POST',
             body: formData
         })
