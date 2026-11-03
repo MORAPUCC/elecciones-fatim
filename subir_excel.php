@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once '../config/conexion.php';
+require_once 'conexion.php';
 
 // Si recibes los datos mediante JSON desde el JS del admin o formulario:
 $data = json_decode(file_get_contents('php://input'), true);
