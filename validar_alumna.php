@@ -13,7 +13,7 @@ if (empty($grado) || empty($seccion) || empty($documento)) {
 
 // Buscamos a la alumna en la base de datos
 $stmt = $conexion->prepare("SELECT id, nombres_apellidos, ya_voto FROM alumnas WHERE grado = ? AND seccion = ? AND doc_identidad = ?");
-$stmt->bind_param("iss", $grado, $seccion, $documento);
+$stmt->bind_param("sss", $grado, $seccion, $documento);
 $stmt->execute();
 $resultado = $stmt->get_result();
 
